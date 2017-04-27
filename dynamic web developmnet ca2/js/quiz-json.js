@@ -1,0 +1,257 @@
+var pos = 0, test, test_status, question, choice, choices, choiceA, choiceB, choiceC, correct=0, name = 0; 
+var quizAnswers =[];
+var questions= [
+{
+	question: "Who won the premier league in the 2015-16 season?",//question
+	correctAnswer: "Leicster City", //Correct answer
+	// Possible Choices
+	answer0: "Chelsea",
+	answer1: "Leicster City",
+	answer2: "Man Utd",
+	answer3: "Liverpol"
+},
+{
+	question: "What was the score as Ireland beat New Zealand in Chicago?",//question
+	correctAnswer: "40-29", //Correct Answer
+	// Possible Choices
+	answer0: "36-21",
+	answer1: "40-29",
+	answer2: "40-32",
+	answer3: "33-21"
+}, 
+{
+	question: "Who did Connacht beat in the Pro 12 Final?",//question
+	correctAnswer: "Leinster", //Correct Answer
+	// Possible Choices
+	answer0: "Munster",
+	answer1: "Glasgow",
+	answer2: "Leinster",
+	answer3: "Ulster"
+}, 
+{
+	question: "Who scored the winner for Portugal in the 2016 European Final?",//question
+	correctAnswer: "Eder", //Correct Answer
+	// Possible Choices
+	answer0: "Ronaldo",
+	answer1: "Eder",
+	answer2: "Pepe",
+	answer3: "Mario"
+},
+{
+	question: "Who won Senior footballer of the year for 2016?",//question
+	correctAnswer: "Lee Keegan", //Correct Answer
+	// Possible Choices
+	answer0: "Ciararn Kilkenny",
+	answer1: "Brian Fenton",
+	answer2: "Diarmuid Connolly",
+	answer3: "Lee Keegan"
+},
+{
+	question: "Who won Senior hurler of the year for 2016?",//question
+	correctAnswer: "Austin Gleeson", //Correct Answer
+	//Possible Choices
+	answer0: "Austin Gleeson",
+	answer1: "Padraic Maher",
+	answer2: "Seamus Callinan",
+	answer3: "Richie Hogan"
+},
+{
+	question: "How many medals did Ireland win at the Olympics?",//question
+	correctAnswer: "2", //Correct Answer
+	//Possible Outcomes
+	answer0: "2",
+	answer1: "3",
+	answer2: "4",
+	answer3: "5"
+},
+{
+	question: "Where are the O Donovan brothers from?",//question
+	correctAnswer: "Cork", //Correct Answer
+	// Possible Outcomes
+	answer0: "Limerick",
+	answer1: "Cork",
+	answer2: "Dublin",
+	answer3: "Donegal"
+},
+{
+	question: "Who won the RBS six nations grand slam?",//question
+	correctAnswer: "England", //Correct Answer
+	// Possible Outcomes
+	answer0: "Ireland",
+	answer1: "England",
+	answer2: "Wales",
+	answer3: "France"
+},
+{
+	question: "In what stadium did Ireland beat New Zealand?",//question
+	correctAnswer: "Soldier Field", //Correct Answer
+	// Possible Outcomes
+	answer0: "Wrigley Stadium",
+	answer1: "St Marys",
+	answer2: "Soldier Field",
+	answer3: "Rockine Stadium"
+},
+{
+	question: "Who is the current Dublin football manager?",//question
+	correctAnswer: "Jim Gavin", // Correct Answer
+	// Possible Outcomes
+	answer0: "Jim Gavin",
+	answer1: "Pat Gilory",
+	answer2: "Barney Rock",
+	answer3: "Alan Brogan"
+},
+{
+	question: "Who provided the assist for Robbie Bradys goal vs Italy?",//question
+	correctAnswer: "Wes Hoolohan", //Correct Answer
+	//Possible Outcomes
+	answer0: "Aidan McGeady",
+	answer1: "Seamus Coleman",
+	answer2: "Robbie Keane",
+	answer3: "Wes Hoolohan"
+},
+{
+	question: "Who did Real Madrid beat in the Uefa Champions League Final?",//question
+	correctAnswer: "Atletico Madrid", //Correct Answer
+	// Possible Outcomes
+	answer0: "Atletico Madrid",
+	answer1: "Barcelona",
+	answer2: "Bayern Munich",
+	answer3: "Chelsea"
+},	
+{	
+	question: "In golf, who won the Brittish Open?",//question
+	correctAnswer: "Henrik Stenson", //Correct Answer
+	// Possible Outcomes
+	answer0: "Justin Speith",
+	answer1: "Rory Mcilory",
+	answer2: "Henrik Stenson",
+	answer3: "Sergio Garica"
+},
+{
+	question: "What age was Anthony Foley when he passed away?",//question
+	correctAnswer: "42", //Correct Answer
+	// Possible Outcomes
+	answer0: "40",
+	answer1: "41",
+	answer2: "42",
+	answer3: "43"
+},
+{
+	question: "Who did Tippeary beat in Munster Hurling Final?",//question
+	correctAnswer: "Waterford", //Correct Answer
+	// Possible Outcomes
+	answer0: "Clare",
+	answer1: "Waterford",
+	answer2: "Cork",
+	answer3: "Limerick"
+},
+{
+	question: "Which of these boxers turned professional after the Olympics?",//question
+	correctAnswer: "Michael Conlon", //Correct Answer
+	// Possible Outcomes
+	answer0: "Michael Conlon",
+	answer1: "Paddy Barnes",
+	answer2: "Kenny Egan",
+	answer3: "John Joe Nevin"
+},
+{
+	question: "Which of these Kerry footballers retired in 2016?",//question
+	correctAnswer: "Aidan O Mahony", //Correct Answer
+	// Possible Outcomes
+	answer0: "Aidan O Mahony",
+	answer1: "Paul Galvin",
+	answer2: "Kieran Donaghy",
+	answer3: "Tomas O Se"
+},
+{
+	question: "How many years have Mayo gone without Sam Maguire?",//question
+	correctAnswer: "65", //Correct Answer
+	// Possible Outcomes
+	answer0: "55",
+	answer1: "60",
+	answer2: "65",
+	answer3: "70"
+},
+{
+	question: "Who is the current manager of the Republic soccer team?",//question
+	correctAnswer: "Martin O Neill", //Correct Answer
+	// Possible Outcomes
+	answer0: "Roy Keane",
+	answer1: "Martin O Neill",
+	answer2: "Kenny Cunningham",
+	answer3: "Brian Kerr"
+},
+
+];
+
+
+function _(x)
+{ 
+    return document.getElementById(x);
+} 
+//Setting underscore equal to document.getElementById (handy shortcut)
+		
+function percent()
+{
+    var perc = Math.round((correct/questions.length)*100);
+    return perc;//gets percentage and returns to form
+}
+
+function renderQuestion()
+{
+	test = _("test");
+	if(pos >=questions.length)//If position is greater or equal to the number of questions
+	{
+		test.innerHTML = "<h2>You got "+correct+" of "+questions.length+" questions correct(" +percent() + "%)</h2>"; //Print # correct out of 20
+		_("test_status").innerHTML += " Congratulations on completing this quiz";//Print "thank you...."
+		pos = 0;
+		correct = 0;
+		return false;
+	}
+	var bar=document.getElementById("progressBar");//Progress bar value
+	
+	_("test_status").innerHTML = "Question "+(pos+1)+" of "+questions.length;
+	
+	bar.value = (pos+1)//Progress bar increments as we go through questions, starts at 1
+	
+	question = questions[pos].question;//question is in position 0 in the array(zero indexed)
+	choiceA = questions[pos].answer0;//Choice A is in position 1 in the array
+	choiceB = questions[pos].answer1;//Choice B is in position 2 in the array
+	choiceC = questions[pos].answer2;//Choice C is in position 3 in the array
+	choiceD = questions[pos].answer3;//Choice D is in position 4 in the array
+	test.innerHTML = "<h3>"+question+"</h3>";
+	test.innerHTML += "<input type='radio' name='choices' value='"+choiceA+"' checked> "+choiceA+" <br>"; //Radio button
+	test.innerHTML += "<input type='radio' name='choices' value='"+choiceB+"' checked> "+choiceB+" <br>"; //Radio button
+	test.innerHTML += "<input type='radio' name='choices' value='"+choiceC+"' checked> "+choiceC+" <br>"; //Radio button
+	test.innerHTML += "<input type='radio' name='choices' value='"+choiceD+"' checked> "+choiceD+" <br>"; //Radio button
+	test.innerHTML += "<button onclick='checkAnswer()'>Submit Answer</button>"; 
+	}
+	
+function checkAnswer()
+{
+	choices = document.getElementsByName("choices"); //Creates an array
+	for(var i=0; i<choices.length; i++)//variable i=0, when i is less than the length of the coice, increment it by one
+	{
+		if(choices[i].checked) //if a choice is checked
+		{
+			choice = choices[i].value; //Take the value of that choice and put it into choice
+		}
+	}
+	if(choice == questions[pos].correctAnswer)//If the value of choices is equal to position 4
+	{
+		alert('Correct!');//Alert correct
+		correct++;//Increment your correct answer by one
+	}
+	else//or else//
+	{
+		alert('Sorry wrong answer. The correct answer is ' + questions[pos].correctAnswer);
+	}
+	pos++; //Increment position by one ie go on to the nest question
+	
+	renderQuestion(); //go to render question again
+}
+		
+
+
+//Call the question with an event handler
+window.addEventListener("load", renderQuestion, false);

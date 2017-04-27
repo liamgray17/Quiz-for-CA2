@@ -1,0 +1,17 @@
+div#test
+{ 
+	border:White 20px groove;
+	padding:10px 40px 40px 40px;
+	margin-top: 30px;
+    margin-bottom: 40px;
+    margin-right: 150px;
+}
+	
+body
+{
+	padding-top: 20px;
+	background-color:Orange;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left:0px;
+}
